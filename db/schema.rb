@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_24_181721) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_25_182757) do
   create_table "card_decks", force: :cascade do |t|
     t.integer "usr_id"
     t.string "name"
+    t.integer "user_id"
   end
 
   create_table "cards", force: :cascade do |t|
-    t.integer "deck_id"
     t.text "card_q"
     t.text "card_a"
+    t.integer "deck_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -28,4 +29,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_24_181721) do
     t.string "role"
   end
 
+  add_foreign_key "card_decks", "users"
+  add_foreign_key "cards", "card_decks", column: "deck_id"
 end
