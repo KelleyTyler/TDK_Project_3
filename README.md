@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a project in rails created;
 
-Things you may want to cover:
+Project #3:
 
-* Ruby version
+Userstory:
 
-* System dependencies
+- Authenticate Account
 
-* Configuration
+- Create a deck of flashcard
 
-* Database creation
+- add card to deck
 
-* Database initialization
+- edit card to deck
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- study deck
