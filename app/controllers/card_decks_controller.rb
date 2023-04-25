@@ -1,7 +1,9 @@
 class CardDecksController < ApplicationController
+    def index
+    end
     def create
     end
-    def show
+    def show 
     end
     def edit
     end
