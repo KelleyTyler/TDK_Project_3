@@ -11,6 +11,34 @@
   </head>
 
   <body>
+    <h1><b>TYLER KELLEY PROJECT 3</b></h1>
+    <button onclick="testingCookie()">DoesIdentity</button>
+    <button onclick="simplifiedLogout()">ClearCookie</button><!--This is here to make sure that I have a way to test cookies bbetter--> 
     <%= yield %>
   </body>
 </html>
+
+<script>
+const testingCookie = () =>{
+  console.log("cookieTest:")
+  if(localStorage.getItem("user")===null)
+  {
+  console.log("CLEAR")
+  }
+  else
+  {
+    console.log(localStorage.getItem("user"));
+  }
+}
+const simplifiedLogout = () =>
+{
+  if(!(localStorage.getItem("user")===null))
+  {
+    localStorage.removeItem("user");
+  }
+}
+const getFromCookie= () =>
+{
+
+}
+</script>

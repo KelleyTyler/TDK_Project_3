@@ -3,7 +3,7 @@ class User < ApplicationRecord
     #self.primary_key = "id"
     
 
-    def authenticate
-        return 1;
+    def authenticate(pword)
+        pword == self.password
     end
 end

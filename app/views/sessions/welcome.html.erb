@@ -1,0 +1,47 @@
+<h1> WELCOME! </h1>
+<p>Please Login:</p>
+
+<div>
+<Label for="user_name"> Username </label>
+<input type= "text" id = "user_name" name ="username">
+<br>
+<Label for="password"> Password </label>
+<input type= "password" id ="usr_password" name="password">
+</div>
+<br>
+<button onclick="testRedirect()">Login</button>
+
+<script> 
+var usrName = document.getElementById("user_name").value;
+var usr_password = document.getElementById("usr_password").value;
+if(!(localStorage.getItem("user")===null))
+{
+    console.log("USER IS THERE");
+    window.location.href="http://localhost:3000/";
+}
+else
+{
+  console.log("nothing");
+}
+function updateUser()
+{
+  usrName = document.getElementById("user_name").value;
+  usr_password = document.getElementById("usr_password").value;
+}
+function getUserJson()
+{
+  return {username: usrName,password: usr_password}
+}
+function testRedirect() {
+  //updateUser();
+  testfunction()
+  fetch("http://localhost:3000/login",{method: 'POST', redirect:"follow", headers: {'Content-Type': 'application/json'},body: JSON.stringify(getUserJson())}).then(data=> {if(data.ok){localStorage.setItem("user",JSON.stringify(getUserJson()))}}).then(data => console.log(data)).catch(error => {console.error('Error:', error);});
+   
+}
+
+function testfunction()
+{
+  updateUser();
+  console.log("UserName: "+usrName+"\nPassword:"+usr_password);
+}
+</script>

@@ -1,3 +1,3 @@
 class Card < ApplicationRecord
-    has_one :card_deck
+    belongs_to :card_deck
 end
