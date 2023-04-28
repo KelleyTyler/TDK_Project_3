@@ -40,6 +40,6 @@ class SessionsController < ApplicationController
     end
     def destroy
         cookies[:user]=nil
-        render :loggedOut
+        redirect_to "/"
     end
 end

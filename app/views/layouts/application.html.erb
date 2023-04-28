@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TDKProject3</title>
+    <title>project3</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,36 +11,23 @@
   </head>
 
   <body>
-    <h1><b>TYLER KELLEY PROJECT 3</b></h1>
-    <%= button_to 'LOGOUT', '/logout'%>
-    <%= link_to 'SHOW CARD DECKS ', '/deck/show/'+cookies[:user]["id"] %>
-    <%= link_to 'CREATE CARD DECKS', '/deck/create_deck/'%>
+    <div style="border: 1px solid black">
+    <h1 style="text-align: center"><%=link_to "PROJECT 3", '/' %></h1>
+    <% if cookies[:user] != '' %>
+    <table>
+    <tr>
+    <td><%= button_to 'LOGOUT', '/logout'%></td>
+    <td><%= link_to 'SHOW CARD DECKS ', '/deck/show/'+cookies[:user]["id"] %></td>
+    <td><%= link_to 'CREATE CARD DECKS', '/deck/create_deck/'%></td>
+    
+    </tr>
+    </table>
+    <%end %>
+    </div >
     <%#= link_to 'CREATE CARDS ','/card/makeCard'%>
     <%= yield %>
   </body>
 </html>
 
 <script>
-const testingCookie = () =>{
-  console.log("cookieTest:")
-  if(localStorage.getItem("user")===null)
-  {
-  console.log("CLEAR")
-  }
-  else
-  {
-    console.log(localStorage.getItem("user"));
-  }
-}
-const simplifiedLogout = () =>
-{
-  if(!(localStorage.getItem("user")===null))
-  {
-    localStorage.removeItem("user");
-  }
-}
-const getFromCookie= () =>
-{
-
-}
 </script>

@@ -1,12 +1,12 @@
 <h1>HAH </h1>
 <div>YOUR LISTS
-    <ul>
+    <table>
     <%= @card_decks.each do |x|%>
-    <li>
+    <tr>
     <!--NEED TO REPLACE THIS WITH A SERIES OF "LINKS"-->
-    <%="--------"%>
-    <%= link_to "#{x.id}, #{x.name}", "/card/#{x.id}"%>
-    </li>
+    <td><%= link_to "#{x.id}, #{x.name}", "/card/#{x.id}"%></td>
+    <td><%= link_to "DELETE","/deckDestroy/#{x.id}"%></td>
+    </tr>
     <%end%>
-    </ul>
+    </table>
 </div>

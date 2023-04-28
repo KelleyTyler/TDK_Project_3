@@ -1,0 +1,12 @@
+<h2>EDIT CARD </h2>
+<div>
+    <%=form_with  url:'/cardChange', local: true, method: :get, data: {turbo: false} do |form|%>
+    <%=form.hidden_field :id_num, value: @card["id"]%>
+    <%=form.hidden_field :deck_id, value: @card["deck_id"]%>
+    <%=form.label :c_q, "QUESTON:"%>
+    <%=form.text_field :c_q, value: @card["card_q"]%>
+    <%=form.label :c_a, "_ANSWER:"%>
+    <%=form.text_field :c_a, value: @card["card_a"]%>
+    <%=form.submit %>
+    <%end%>
+</div>

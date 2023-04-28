@@ -9,9 +9,9 @@
     <%=@card.each do |x|%>
         <tr>
         <td style="border:2px solid black"><%="#{x.id}"%></td>
-        <td style="border:2px solid black"><%="#{x.card_a}"%></td>
         <td style="border:2px solid black"><%="#{x.card_q}"%></td>
-        <td style="border:2px solid black"><%= linke_to "EDIT", "/cardEdit/#{x.id}" %></td>
+        <td style="border:2px solid black"><%="#{x.card_a}"%></td>
+        <td style="border:2px solid black"><%= link_to "EDIT", "/cardEdit/#{x.id}" %></td>
         <td style="border:2px solid black"><%= link_to "DELETE", "/cardDelete/#{x.id}" %></td>
         </tr>
     <%end%>
