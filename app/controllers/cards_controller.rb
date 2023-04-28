@@ -17,7 +17,7 @@ class CardsController < ApplicationController
         number +=1
         puts "NUMBER: #{number} deck ID #{params[:deckNum].to_i},CQ #{params[:c_q]},CA: #{params[:c_a]}"
         @cardDeck = CardDeck.where(id: params[:deckNum]).first
-        @card = Card.create(id: number.to_i, card_q: params[:c_q].to_s, card_a: params[:c_a].to_s, deck_id: 1)
+        @card = Card.create(id: number.to_i, card_q: params[:c_q].to_s, card_a: params[:c_a].to_s, deck_id: params[:deckNum])
         puts"-------------------------------"
         puts "ncard: #{@card.id}, #{@card.deck_id}"
 
