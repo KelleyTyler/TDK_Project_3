@@ -1,7 +1,12 @@
 require "test_helper"
 
 class CardDecksControllerTest < ActionDispatch::IntegrationTest
-   test "the truth" do
+
+  setup do
+  end
+  test "the truth" do
      assert true
-   end
+  end
+  test "user_login information is read" do
+  end
 end

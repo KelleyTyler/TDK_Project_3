@@ -1,20 +1,35 @@
 <h1>INDEX</h1>
 <table>
   <tr>
-  <th>USER NAME</th>
+  <th>ID</th>
+  <th>Username</th>
+  <th>Password</th>
+  <th>Role</th>
   </tr>
   <tr>
-  <td><%=%></td>
+  <td><%="#{@user["id"]}"%></td>
+  <td><%="#{@user["username"]}"%></td>
+  <td><%="#{}"%></td>
+  <td><%="#{@user["role"]}"%></td>
   </tr>
 </table>
 <script> 
 //var usrName = document.getElementById("user_name").value;
 //var usr_password = document.getElementById("usr_password").value;
-if(localStorage.getItem("user")===null)
-{
-  window.location.href="http://localhost:3000/login";
+// if(localStorage.getItem("user")===null)
+// {
+//   window.location.href="http://localhost:3000/login";
+// }
+function testRedirect(url,Reqs, user_json) {
+  //updateUser();
+  testfunction()
+  let RetValue = false;
+  fetch(url,{method: Reqs, headers: {'Content-Type': 'application/json'},body: JSON.stringify(user_json)}).then(data=> {if(data.ok){RetValue=true}}).then(data => console.log(data)).catch(error => {console.error('Error:', error);});
+  return RetValue; 
 }
-
+//"http://localhost:3000/login"
+//getUserJson()
+//localStorage.setItem("user",JSON.stringify(getUserJson()))
 
 // function testfunction()
 // {

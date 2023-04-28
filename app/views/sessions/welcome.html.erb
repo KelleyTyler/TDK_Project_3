@@ -1,17 +1,34 @@
 <h1> WELCOME! </h1>
 <p>Please Login:</p>
 
-<div>
-<Label for="user_name"> Username </label>
-<input type= "text" id = "user_name" name ="username">
-<br>
-<Label for="password"> Password </label>
-<input type= "password" id ="usr_password" name="password">
-</div>
-<br>
-<button onclick="testRedirect()">Login</button>
+<%= form_with url:'/login', local: true, method: :post, data: {turbo: false} do |form| %>
+  <%=form.label :usrname, "username:"%>
+  <%= form.text_field :usrname %>
+  <%=form.label :pssword, "password:"%>
+  <%=form.text_field :pssword %>
+  <%= form.submit "Submit"%>
+<%end%>
+<%#= button_to 'LOGIN', :controller => "session", :action=>"create", :method=> :POST, %>
 
-<script> 
+
+
+
+
+
+
+
+
+<script>
+
+// <div>
+// <Label for="user_name"> Username </label>
+// <input type= "text" id = "user_name" name ="username">
+// <br>
+// <Label for="password"> Password </label>
+// <input type= "password" id ="usr_password" name="password">
+// </div>
+// <br>
+//<button onclick="testRedirectTwo()">Login</button>
 var usrName = document.getElementById("user_name").value;
 var usr_password = document.getElementById("usr_password").value;
 if(!(localStorage.getItem("user")===null))
@@ -28,20 +45,38 @@ function updateUser()
   usrName = document.getElementById("user_name").value;
   usr_password = document.getElementById("usr_password").value;
 }
-function getUserJson()
-{
-  return {username: usrName,password: usr_password}
-}
-function testRedirect() {
-  //updateUser();
-  testfunction()
-  fetch("http://localhost:3000/login",{method: 'POST', redirect:"follow", headers: {'Content-Type': 'application/json'},body: JSON.stringify(getUserJson())}).then(data=> {if(data.ok){localStorage.setItem("user",JSON.stringify(getUserJson()))}}).then(data => console.log(data)).catch(error => {console.error('Error:', error);});
-   
-}
 
+// function testRedirect() {
+//   //updateUser();
+//   testfunction()
+//   fetch("http://localhost:3000/login",{method: 'POST', redirect:"follow", headers: {'Content-Type': 'application/json'},body: JSON.stringify(getUserJson())}).then(data=> {if(data.ok){localStorage.setItem("user",JSON.stringify(getUserJson()))}}).then(data => console.log(data)).catch(error => {console.error('Error:', error);});
+   
+// }
 function testfunction()
 {
   updateUser();
   console.log("UserName: "+usrName+"\nPassword:"+usr_password);
 }
+function getUserJson()
+{
+  return {username: usrName,password: usr_password}
+}
+function testRedirect(url,Reqs,user_json) {
+  //updateUser();
+  testfunction()
+  let RetValue = false;
+  fetch(url,{method: Reqs, headers: {'Content-Type': 'application/json'},body: JSON.stringify(user_json)}).then(data=> {if(data.ok){RetValue=true}}).then(data => console.log(data)).catch(error => {console.error('Error:', error);});
+  return RetValue; 
+}
+
+function testRedirectTwo()
+{
+  if(!testRedirect("http://localhost:3000/login",'POST',getUserJson()))
+  {
+    localStorage.setItem("user",JSON.stringify(getUserJson()))
+    window.location.reload();
+  }
+}
+
+
 </script>

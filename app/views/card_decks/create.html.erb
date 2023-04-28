@@ -1,5 +1,22 @@
 <h1>Card Deck Make</h1>
 <div>
+    <%="FOR USER: #{@user["username"]}"%>
+    <%=form_with url:'/deck/make/', local:true, method: :post, data: {turbo: false} do |form|%>
+        <%=form.label :dname,"DeckName"%>
+        <%=form.text_field :dname %>
+        <%=form.hidden_field :uID, value: @user["id"]%>
+        <%=form.hidden_field :idnum, value:(@number+1).to_i %>
+        <%=form.submit%>
+    <%end%>
+    <%#= "IN DECK:#{cookies[:deck_id]}"%>
+   <%#=form_with url:'/card', local:true, method: :post, data: {turbo: false} do |form|%>
+        <%#=form.label :c_question,"QUESTION:"%>
+        <%#=form.text_field :c_question%>
+        <%#=form.label :c_question,"ANSWER:"%>
+        <%#=form.text_field :c_answer%>
+        <%#=form.submit%>
+
+   <%#end%>
     
 </div>
 <script>

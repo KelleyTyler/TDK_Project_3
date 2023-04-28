@@ -3,12 +3,19 @@ Rails.application.routes.draw do
   get '/', to: 'sessions#index'
   get '/login', to: 'sessions#welcome'
   post '/login', to: 'sessions#create'
+  post '/logout', to: 'sessions#destroy'
 
-  get '/deck', to: 'carddecks#show'
-  post '/deck/create_deck', to: 'carddecks#create'
+  get '/deck/show/:uID', to: 'card_decks#show'
+  get '/deck/create_deck/', to: 'card_decks#create'
+  post '/deck/make/', to: 'card_decks#make' 
 
-  get '/deck/:deck_id', to: 'cards#view' #<---Needs Verification 
-  post '/deck/:deck_id/makeCard', to: 'cards#create' #<---- Needs Verification
+  get '/card/:deck_id', to: 'cards#show' #<---Needs Verification 
+  #get '/card/:card_id'
+  post '/card/make', to:'cards#create'
+  #post '/card/makeCard', to: 'cards#create' #<---- Needs Verification
+  put '/card/:card_id', to: 'cards#edit'
+  get '/cardDelete/:card_id', to: 'cards#destroy'
+  get '/cardEdit/:card_id', to: 'cards#edit'
   # Defines the root path route ("/")
   # root "articles#index"
 end

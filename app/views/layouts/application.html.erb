@@ -12,8 +12,10 @@
 
   <body>
     <h1><b>TYLER KELLEY PROJECT 3</b></h1>
-    <button onclick="testingCookie()">DoesIdentity</button>
-    <button onclick="simplifiedLogout()">ClearCookie</button><!--This is here to make sure that I have a way to test cookies bbetter--> 
+    <%= button_to 'LOGOUT', '/logout'%>
+    <%= link_to 'SHOW CARD DECKS ', '/deck/show/'+cookies[:user]["id"] %>
+    <%= link_to 'CREATE CARD DECKS', '/deck/create_deck/'%>
+    <%#= link_to 'CREATE CARDS ','/card/makeCard'%>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,29 @@
+<h2><%="ID: #{@deck["name"]}"%></h2>
+<h3>TEST TEST TEST</h3>
+<table>
+    <tr>
+        <th>Card Num</th>
+        <th>Question</th>
+        <th>Answer</th>
+    </tr>
+    <%=@card.each do |x|%>
+        <tr>
+        <td style="border:2px solid black"><%="#{x.id}"%></td>
+        <td style="border:2px solid black"><%="#{x.card_a}"%></td>
+        <td style="border:2px solid black"><%="#{x.card_q}"%></td>
+        <td style="border:2px solid black"><%= linke_to "EDIT", "/cardEdit/#{x.id}" %></td>
+        <td style="border:2px solid black"><%= link_to "DELETE", "/cardDelete/#{x.id}" %></td>
+        </tr>
+    <%end%>
+    <!--CREATE -->
+</table>
+MAKE A NEW CARD!!!!
+<%=form_with  url:'/card/make', local: true, method: :post, data: {turbo: false} do |form|%>
+    <%=form.hidden_field :deckNum, value: @deck["id"] %>
+    <%=form.label :c_q, "QUESTON:"%>
+    <%=form.text_field :c_q%>
+    <br>
+    <%=form.label :c_a, "_ANSWER:"%>
+    <%=form.text_field :c_a%>
+    <%=form.submit %>
+<%end%>
