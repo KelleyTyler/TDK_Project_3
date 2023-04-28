@@ -11,15 +11,19 @@ class CardsController < ApplicationController
         #:user_id, deck_id, card
         #@card = Card 
         number = Card.maximum(:id).to_i
+        if(number==nil)
+        number = 0
+        end
         number +=1
         puts "NUMBER: #{number} deck ID #{params[:deckNum].to_i},CQ #{params[:c_q]},CA: #{params[:c_a]}"
-        @card = Card.create(id: number, card_q: params[:c_q].to_s, card_a: params[:c_a].to_s, deck_id: params[:deckNum])
+        @cardDeck = CardDeck.where(id: params[:deckNum]).first
+        @card = Card.create(id: number.to_i, card_q: params[:c_q].to_s, card_a: params[:c_a].to_s, deck_id: 1)
         puts"-------------------------------"
         puts "ncard: #{@card.id}, #{@card.deck_id}"
 
         if @card.save
             #puts "MADE IT"
-            redirect_to "/card/#{params[:deckNum]}"
+            redirect_to "/card/#{params[:deckNum].to_i}"
             #redirect_to action:'show'
             #render :show, status: :ok
         else
@@ -43,7 +47,7 @@ class CardsController < ApplicationController
     def study
         #cardID = params[:card_id]
         @cards = Card.where(deck_id: params[:deck_id])
-        
+
     end
     def edit
         @card = Card.where(id: params[:card_id]).first

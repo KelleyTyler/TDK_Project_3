@@ -8,7 +8,9 @@ class CardDecksController < ApplicationController
         @user = JSON.parse(cookies[:user])
         #maybe a confirmation of ID
         @number = CardDeck.maximum(:id);
-        @number
+        if (@number == nil)
+            @number=0;
+        end
 
     end
     def make
