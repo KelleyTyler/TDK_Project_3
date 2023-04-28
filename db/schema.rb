@@ -18,9 +18,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_25_182757) do
   end
 
   create_table "cards", force: :cascade do |t|
+    t.integer "deck_id"
     t.text "card_q"
     t.text "card_a"
-    t.integer "deck_id"
   end
 
   create_table "users", force: :cascade do |t|
